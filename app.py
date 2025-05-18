@@ -1,3 +1,4 @@
+#Тут был мой первый коммит
 from flask import request, Flask, render_template, flash
 #pip install flask-sqlalchemy flask-migrate flask-login
 from flask_sqlalchemy import SQLAlchemy
