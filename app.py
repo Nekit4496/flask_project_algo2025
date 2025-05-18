@@ -1,43 +1,8 @@
 #Тут был мой первый коммит
-from flask import request, Flask, render_template, flash
-#pip install flask-sqlalchemy flask-migrate flask-login
-from flask_sqlalchemy import SQLAlchemy
-from flask_migrate import Migrate
-from flask_login import LoginManager, login_user, login_required, current_user, logout_user, UserMixin
-
-import os
-
-from unicodedata import category
-
-app = Flask(__name__)
-app.config['SECRET_KEY'] = 'sgdfgzdfg'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///users.db'
 
 
-#Создание БД
-db = SQLAlchemy(app) #создание объекта бд
-print(db.__dict__)
-migrate = Migrate(app, db) #миграция таблиц/настроек/прочего в БД из приложения
+#Какие то изменения
 
-
-class User(db.Model):
-    id = db.Column(db.Integer, primary_key = True)
-    username = db.Column(db.String(64), unique = True)
-    email = db.Column(db.String(64), unique = True)
-    password = db.Column(db.String(256))
-
-#логин
-login_manager = LoginManager(app)
-class UserLogin():
-    def is_active(self):
-        return True
-    def is_authorized(self):
-        return True
-    def is_anonymous(self):
-        False
-    def is_authenticated(self):
-        True
-    def get_id(self):
         pass
 
 @login_manager.user_loader
