@@ -1,0 +1,250 @@
+/* styles.css */
+/* Базовые сбросы стилей */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', system-ui, sans-serif;
+}
+
+body {
+    line-height: 1.6;
+    background-color: #f8f9fa;
+    color: #333;
+}
+
+/* Стили хедера */
+header {
+    background: linear-gradient(135deg, #2c3e50, #3498db);
+    color: white;
+    padding: 1rem;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+header h1 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+nav ul {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    list-style: none;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+nav a:hover {
+    background: rgba(255,255,255,0.15);
+    transform: translateY(-2px);
+}
+
+/* Основной контент */
+main {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+    min-height: calc(100vh - 200px);
+}
+
+/* Футер */
+footer {
+    background: #2c3e50;
+    color: white;
+    text-align: center;
+    padding: 1.5rem;
+    margin-top: auto;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 1.5rem;
+    }
+
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    nav a {
+        display: block;
+        width: 100%;
+        text-align: center;
+    }
+
+    main {
+        margin: 1rem auto;
+        padding: 0 0.5rem;
+    }
+}
+
+@media (min-width: 1200px) {
+    header h1 {
+        font-size: 2.2rem;
+    }
+}
+
+/* Дополнительные стили для форм (если нужно) */
+.btn {
+    display: inline-block;
+    padding: 0.8rem 1.5rem;
+    background: #3498db;
+    color: white;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: transform 0.2s;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+/* Стили для блоков контента */
+.content-section {
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    margin: 2rem 0;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+}
+
+/* Стили для контейнера аутентификации */
+.auth-container {
+    display: flex;
+    justify-content: center;
+    padding: 2rem 1rem;
+}
+
+.auth-forms {
+    width: 100%;
+    max-width: 400px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    padding: 2rem;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Стили для форм */
+.form-section {
+    transition: transform 0.3s ease;
+}
+
+.form-section:not(.active) {
+    display: none;
+}
+
+.auth-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.form-group label {
+    font-weight: 500;
+    color: #2c3e50;
+    font-size: 0.9rem;
+}
+
+.form-group input {
+    padding: 0.8rem;
+    border: 2px solid #e0e0e0;
+    border-radius: 6px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.form-group input:focus {
+    border-color: #3498db;
+    box-shadow: 0 0 0 3px rgba(52,152,219,0.1);
+    outline: none;
+}
+
+.auth-switch {
+    text-align: center;
+    margin-top: 1rem;
+    color: #666;
+}
+
+.auth-switch a {
+    color: #3498db;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.auth-switch a:hover {
+    color: #2980b9;
+}
+
+/* Адаптивность для форм */
+@media (max-width: 480px) {
+    .auth-forms {
+        padding: 1.5rem;
+        box-shadow: none;
+        background: transparent;
+    }
+
+    .auth-form {
+        gap: 1rem;
+    }
+
+    .form-group input {
+        padding: 0.75rem;
+    }
+}
+
+/* Анимация переключения форм */
+@keyframes slideIn {
+    from { transform: translateX(100%); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes slideOut {
+    from { transform: translateX(0); opacity: 1; }
+    to { transform: translateX(-100%); opacity: 0; }
+}
+
+.flash {
+    padding: 10px;
+    background: green;
+    border: 1px solid lime; /* Добавляем границу по умолчанию для всех .flash */
+}
+
+.flash.success {
+    border-color: green; /* Уточняем цвет границы для успеха */
+    background: lime;
+}
+
+.flash.error {
+    border-color: red; /* Уточняем цвет границы для ошибки */
+    background: red;
+}
+
+.flash.neutral {
+    border-color: yellow; /* Уточняем цвет границы для ошибки */
+    background: orange;
+}

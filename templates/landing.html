@@ -1,0 +1,48 @@
+<!-- landing.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Курсы программирования</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+
+<header>
+    <h1>Курсы программирования</h1>
+    <nav>
+        <ul>
+            <li><a href="#about">О курсах</a></li>
+            <li><a href="#courses">Курсы</a></li>
+            <li><a href="{{ url_for('logreg') }}">Вход/Регистрация</a></li>
+            <li><a href="{{ url_for('register') }}">Счетчик посещений (без авторизации)</a></li>
+            <li><a href="{{ url_for('login') }}">Войти</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main>
+    {% block content %}
+            {% for cat, msg in get_flashed_messages(True) %}
+                <div class="flash {{ cat }}">{{ msg }}</div>
+            {% endfor %}
+    {% endblock %}
+</main>
+
+<footer>
+    <p>&copy; 2024 Курсы программирования. Все права защищены.  </p>
+</footer>
+
+<script>
+document.querySelectorAll('.switch-form').forEach(link => {
+    link.addEventListener('click', (e) => {
+        e.preventDefault();
+        document.querySelectorAll('.form-section').forEach(section => {
+            section.classList.toggle('active');
+        });
+    });
+});
+</script>
+</body>
+</html>
